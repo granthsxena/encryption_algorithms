@@ -1,3 +1,5 @@
+# this algorithm just comverts aplhabets into numbers based on their ord value and randomisation 
+
 import random
 
 def isOdd(length):
@@ -48,4 +50,4 @@ def encryption_1(text, key):
     return final
 
 #testing print statements
-print(encryption_1("", "cod123"))
+print(encryption_1("kobe", "cod123"))
