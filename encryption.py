@@ -8,6 +8,9 @@ def convert_letter(letter):
 
 
 def encrypt_1(text):
+    #basic idea for this encryption algo is to convert odd characters into integers
+    # and even characters in to mirror characters (for ex. a becomes z)
+    #flip the final string
     answer = []
     for i in range(len(text)):
         if i % 2:  # odd
