@@ -1,53 +1,24 @@
-# this algorithm just comverts aplhabets into numbers based on their ord value and randomisation 
-
-import random
-
-def isOdd(length):
-    if length % 2 == 0:
-        return False
+def convert_letter(letter):
+    if letter.islower():
+        return chr(ord('z') - (ord(letter) - ord('a')))
+    elif letter.isupper():
+        return chr(ord('Z') - (ord(letter) - ord('A')))
     else:
-        return True
+        return letter
 
 
-def encryption_1(text, key):
-    #this algorithm flips the string first
-    # replaces the second word
+def encrypt_1(text):
+    answer = []
+    for i in range(len(text)):
+        if i % 2:  # odd
+            answer.append(str(ord(text[i]) - 96))
+        else:
+            answer.append(convert_letter(text[i]))
 
-    innitial = text[::-1]
-    lyst = []
-
-
-    for i in innitial:
-        lyst.append(i)
-
-    lyst_second_last = lyst[-2]
-    lyst_second = lyst[1]
-
-    text_length = len(text)
-
-
-    if isOdd(text_length):
-        #change variable placement
-        lyst[1] = lyst_second_last
-        lyst[-2] = lyst_second
-    else:
-        #use randomness here
-        divider = random.randint(1,10)
-        internal_divider = random.randint(1,10)
-        if divider >= 5:
-            for i in range(len(lyst)):
-                if not isOdd(i):
-                    #change the logic here where a becomes
-                    lyst[i] = lyst[i].upper()
-                    if internal_divider >= 5:
-                        lyst[i] = str((ord(lyst[i]) - 3) // 12)
-                else:
-                    lyst[i] = str((ord(lyst[i])-3)//12)
-
-    final = ''.join(lyst)
-
+    final = "".join(answer)
+    final = final[::-1]  # Flip the final string
 
     return final
 
-#testing print statements
-print(encryption_1("kobe", "cod123"))
+
+print(encrypt_1("cant read this even if you tried"))
